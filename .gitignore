@@ -1,4 +1,15 @@
-.git
-.idea
-/target/*
-*.iml
+**/.idea
+**.iml
+**/target
+
+# Mac
+.DS_Store
+  
+# Maven
+**/log/
+**/target/
+
+#Gradle
+**/build/
+**/gradle/
+**/.gradle/
