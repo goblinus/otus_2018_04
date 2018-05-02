@@ -11,7 +11,7 @@
 
     <artifactId>01</artifactId>
 
-    <name>l01-obfuscation</name>
+    <name>l01</name>
     <description>Home excercise for course's lesson #1</description>
 
     <properties>
@@ -25,6 +25,16 @@
         <finalName>otus-${project.name}</finalName>
         <sourceDirectory>src</sourceDirectory>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <archive>
+                        <manifest><mainClass>ru.otus.JLess01</mainClass></manifest>
+                    </archive>
+                </configuration>
+            </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
@@ -43,40 +53,9 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>ru.otus.Obfuscation</mainClass>
+                            <mainClass>ru.otus.JLess01</mainClass>
                         </manifest>
                     </archive>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.wvengen</groupId>
-                <artifactId>proguard-maven-plugin</artifactId>
-                <version>2.0.14</version>
-
-                <dependencies>
-                    <dependency>
-                        <groupId>net.sf.proguard</groupId>
-                        <artifactId>proguard-base</artifactId>
-                        <version>6.0.2</version>
-                    </dependency>
-                </dependencies>
-
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals><goal>proguard</goal></goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <proguardVersion>6.0.2</proguardVersion>
-                    <obfuscate>true</obfuscate>
-                    <outjar>otus-${project.name}-proguard.jar</outjar>
-
-                    <options>
-                        <option>-keep public class ru.otus.Obfuscation { public static void main(java.lang.String[]); }</option>
-                        <option>-dontwarn</option>
-                    </options>
                 </configuration>
             </plugin>
         </plugins>
